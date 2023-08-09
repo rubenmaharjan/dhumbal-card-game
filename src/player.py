@@ -20,3 +20,19 @@ class Player:
         for card in self.hand:
             print(card.suit, " ", card.value)
 
+    # TODO Implement the function
+    def valid_plays(self):
+        '''
+            Return the players valid moves
+        '''
+        return
+
+    # TODO Implement the function
+    def finish_game(self):
+        '''
+            Finish the game by showing your hand
+            Need to validate the hand. 
+            total needs to be less than 6
+        '''
+        return
+
