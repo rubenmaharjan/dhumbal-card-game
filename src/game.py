@@ -12,5 +12,3 @@ class Game:
     def start_game(self):
         self.dealer.deal_card(self.players)
 
-        for hand in self.player1.hand:
-            hand.show_card()
