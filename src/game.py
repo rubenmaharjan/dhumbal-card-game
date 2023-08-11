@@ -4,6 +4,9 @@ from player import Player
 class Game:
 
     def __init__(self):
+        '''
+            Set the players and agents of the game.
+        '''
         self.player1 = Player(1)
         player2 = Player(2)
         self.players = [self.player1, player2]

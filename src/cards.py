@@ -3,6 +3,9 @@ import random
 class Card(object):
 
     def __init__(self, suit, value):
+        '''
+            Card object that defines suit and value
+        '''
         self.suit = suit
         self.value = value
 
