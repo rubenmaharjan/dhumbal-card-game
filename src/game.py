@@ -1,5 +1,5 @@
-from dealer import Dealer
-from player import Player
+from src.dealer import Dealer
+from src.player import Player
 
 class Game:
 

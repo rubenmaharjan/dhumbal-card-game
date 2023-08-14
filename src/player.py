@@ -1,4 +1,5 @@
-from cards import Card
+from itertools import combinations, chain
+from src.cards import Card
 
 class Player:
 
@@ -36,3 +37,22 @@ class Player:
         '''
         return
 
+
+    def get_sequence(self):
+
+        def is_sequence_consecutive(sequence: list[tuple[Card]]):
+            return all(a.value == (b.value - 1) for a, b in zip(sequence[:-1], sequence[1:]))
+
+        def card_combination_of_size(n:int):
+            return list(combinations(self.hand,n))
+
+        possible_sequence = []
+        for i in range(3, len(self.hand)):
+            seq = card_combination_of_size(i) # Get the combination of cards in hand
+
+            # Filter out the card combinations that has different suite
+            seq = [group for group in seq if len(set(item.suit for item in group)) == 1]
+            for s in seq:
+                if is_sequence_consecutive(s):
+                    possible_sequence.append(s)
+        return possible_sequence

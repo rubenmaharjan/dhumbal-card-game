@@ -12,6 +12,12 @@ class Card(object):
     def show_card(self):
         print(self.suit," , ", self.value)
 
+    def __str__(self):
+        return f'{self.suit} {self.value}'
+
+    def __repr__(self):
+        return str(self)
+
 class Deck(object):
 
     def __init__(self):
