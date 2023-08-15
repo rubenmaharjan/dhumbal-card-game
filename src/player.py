@@ -38,7 +38,7 @@ class Player:
         return
 
 
-    def get_sequence(self):
+    def get_sequence(self) -> list[tuple[Card]]:
 
         def is_sequence_consecutive(sequence: list[tuple[Card]]):
             return all(a.value == (b.value - 1) for a, b in zip(sequence[:-1], sequence[1:]))
@@ -47,7 +47,7 @@ class Player:
             return list(combinations(self.hand,n))
 
         possible_sequence = []
-        for i in range(3, len(self.hand)):
+        for i in range(3, len(self.hand)+1):
             seq = card_combination_of_size(i) # Get the combination of cards in hand
 
             # Filter out the card combinations that has different suite
@@ -55,4 +55,16 @@ class Player:
             for s in seq:
                 if is_sequence_consecutive(s):
                     possible_sequence.append(s)
+        print(possible_sequence, len(possible_sequence))
         return possible_sequence
+
+    def get_doubles(self) -> list[tuple[Card]]:
+        card_map:dict[list] = {}
+        for card in self.hand:
+            if card_map.get(card.value):
+                card_map[card.value].append(card)
+            else: 
+                card_map[card.value] = [card]
+        doubles = [tuple(group) for group in card_map.values() if len(group) >= 2]
+        return doubles
+

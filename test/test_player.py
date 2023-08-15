@@ -10,10 +10,13 @@ class TestPlayer(unittest.TestCase):
         self.deck = Deck()
         self.deck.build()
         self.player = Player(1)
-        self.player.hand = self.deck.cards[:20:4]
+        self.player.hand = self.deck.cards[:10:2]
 
     def test_palyer_hand(self):
         self.assertEqual(len(self.player.hand),5)
 
     def test_sequence_maker(self):
-        self.assertGreaterEqual(len(self.player.get_sequence()), 1)
+        self.assertEqual(len(self.player.get_sequence()), 1)
+
+    def test_doubles(self):
+        self.assertEqual(len(self.player.get_doubles()), 2)
