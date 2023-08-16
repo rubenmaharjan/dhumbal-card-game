@@ -20,3 +20,6 @@ class TestPlayer(unittest.TestCase):
 
     def test_doubles(self):
         self.assertEqual(len(self.player.get_doubles()), 2)
+
+    def test_valid_plays(self):
+        self.assertEqual(len(self.player.valid_plays()), 8)
