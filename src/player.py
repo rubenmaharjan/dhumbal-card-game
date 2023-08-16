@@ -21,12 +21,12 @@ class Player:
         for card in self.hand:
             print(card.suit, " ", card.value)
 
-    # TODO Implement the function
-    def valid_plays(self):
+    def valid_plays(self) -> list[list[Card]]:
         '''
             Return the players valid moves
         '''
-        return
+        playable_cards = [] + self.get_sequence() + self.get_doubles() + [[card] for card in self.hand]
+        return playable_cards
 
     # TODO Implement the function
     def finish_game(self):
@@ -38,7 +38,7 @@ class Player:
         return
 
 
-    def get_sequence(self) -> list[tuple[Card]]:
+    def get_sequence(self) -> list[list[Card]]:
 
         def is_sequence_consecutive(sequence: list[tuple[Card]]):
             return all(a.value == (b.value - 1) for a, b in zip(sequence[:-1], sequence[1:]))
@@ -51,20 +51,19 @@ class Player:
             seq = card_combination_of_size(i) # Get the combination of cards in hand
 
             # Filter out the card combinations that has different suite
-            seq = [group for group in seq if len(set(item.suit for item in group)) == 1]
+            seq = [list(group) for group in seq if len(set(item.suit for item in group)) == 1]
             for s in seq:
                 if is_sequence_consecutive(s):
                     possible_sequence.append(s)
-        print(possible_sequence, len(possible_sequence))
         return possible_sequence
 
-    def get_doubles(self) -> list[tuple[Card]]:
+    def get_doubles(self) -> list[list[Card]]:
         card_map:dict[list] = {}
         for card in self.hand:
             if card_map.get(card.value):
                 card_map[card.value].append(card)
             else: 
                 card_map[card.value] = [card]
-        doubles = [tuple(group) for group in card_map.values() if len(group) >= 2]
+        doubles = [group for group in card_map.values() if len(group) >= 2]
         return doubles
 
