@@ -39,6 +39,10 @@ class Player:
 
 
     def get_sequence(self) -> list[list[Card]]:
+        '''
+            Checks for the possible sequence in the hand 
+            and returns [] if none
+        '''
 
         def is_sequence_consecutive(sequence: list[tuple[Card]]):
             return all(a.value == (b.value - 1) for a, b in zip(sequence[:-1], sequence[1:]))

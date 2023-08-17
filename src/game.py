@@ -15,3 +15,5 @@ class Game:
     def start_game(self):
         self.dealer.deal_card(self.players)
 
+        self.winner = False
+
