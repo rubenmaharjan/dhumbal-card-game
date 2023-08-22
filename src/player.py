@@ -62,6 +62,10 @@ class Player:
         return possible_sequence
 
     def get_doubles(self) -> list[list[Card]]:
+        '''
+            Checks the possible double lis AA, 22 in the hand
+            and return [] if none
+        '''
         card_map:dict[list] = {}
         for card in self.hand:
             if card_map.get(card.value):
