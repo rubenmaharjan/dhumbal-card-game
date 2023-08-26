@@ -11,7 +11,7 @@ class Dealer:
         self.choice_card = []
 
     def deal_card(self, players:list[Player], number_of_cards:int = 5):
-        for _ in range(5):
+        for _ in range(number_of_cards):
             for player in players:
                 player.hand.append(self.current_deck.pop())
         self.choice_card = [self.current_deck.pop()]
