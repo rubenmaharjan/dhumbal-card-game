@@ -17,3 +17,17 @@ class Game:
 
         self.winner = False
 
+        while not self.winner:
+            for player in self.players:
+                self.play_turn(player, self.dealer.choice_card)
+
+    def play_turn(self, player:Player, choice_card:list):
+        print("What do you want to play?")
+        valid_plays =  player.valid_plays()
+        for index, valid in enumerate(valid_plays,1):
+            print(index,": ", valid)
+        num = int(input("Enter the number: "))
+        #TODO Check fi the num is valid
+        throw = valid_plays[num-1]
+
+

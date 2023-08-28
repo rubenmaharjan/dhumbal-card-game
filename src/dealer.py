@@ -1,5 +1,6 @@
 from src.cards import Deck
 from src.player import Player
+from src.cards import Card
 
 class Dealer:
 
@@ -8,7 +9,7 @@ class Dealer:
         self.deck.build()
         self.deck.shuffle()
         self.current_deck = self.deck.cards
-        self.choice_card = []
+        self.choice_card: list[Card] = []
 
     def deal_card(self, players:list[Player], number_of_cards:int = 5):
         for _ in range(number_of_cards):
