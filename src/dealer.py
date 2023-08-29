@@ -16,3 +16,8 @@ class Dealer:
             for player in players:
                 player.hand.append(self.current_deck.pop())
         self.choice_card = [self.current_deck.pop()]
+    
+    def clear_choice_card(self):
+        for card in self.choice_card:
+            self.deck.discard(card)
+        self.choice_card = []
