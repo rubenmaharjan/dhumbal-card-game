@@ -28,9 +28,12 @@ class Player:
         playable_cards = [] + self.get_sequence() + self.get_doubles() + [[card] for card in self.hand]
         return playable_cards
 
+    def compute_score(self):
+        self.score = sum([card.value for card in self.hand])
+
     def can_finish(self):
-        card_sum = sum([card.value for card in self.hand])
-        return card_sum < 6
+        self.compute_score()
+        return self.score < 6
 
     # TODO Implement the function
     def finish_game(self):
@@ -39,7 +42,8 @@ class Player:
             Need to validate the hand. 
             total needs to be less than 6
         '''
-        return
+        self.compute_score()
+        print("Player ", self.player_id, " score is : ", self.score)
 
 
     def get_sequence(self) -> list[list[Card]]:
