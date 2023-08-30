@@ -19,21 +19,23 @@ class Game:
 
         while not self.winner:
             for player in self.players:
+            #Check if the player can finish the game
+
+                if player.can_finish():
+                    print("Do you want to show your cards?")
+                    print("1.Yes\n 2.No")
+                    choice_finish = int(input("Enter the number: "))
+                    if choice_finish == 1:
+                        # Finish the game
+                        self.finish_game()
+                        self.winner = True
+                        break
                 self.play_turn(player)
+                print("\nPlayer Change!!!!!!!!!!!!!!!\n")
 
     def play_turn(self, player:Player):
 
-        print("\n Player Change!!!!!!!!!!!!!!!")
 
-        #Check if the player can finish the game
-
-        if player.can_finish():
-            print("Do you want to show your cards?")
-            print("1.Yes\n 2.No")
-            choice_finish = int(input("Enter the number: "))
-            if choice_finish == 1:
-                # Finish the game
-                self.finish_game()
 
         print("Your Current Hand:")
         player.print_current_hand()
@@ -74,7 +76,6 @@ class Game:
         self.dealer.choice_card = throw
 
     def finish_game(self):
-        self.winner = True
         min_score = 100
         winner_player_id = -1
         for player in self.players:
