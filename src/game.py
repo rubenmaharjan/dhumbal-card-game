@@ -1,6 +1,7 @@
 from src.dealer import Dealer
 from src.player import Player
 
+
 class Game:
 
     def __init__(self):
@@ -47,8 +48,10 @@ class Game:
         valid_plays =  player.valid_plays()
         for index, valid in enumerate(valid_plays,1):
             print(index,": ", valid)
-        num = int(input("Enter the number: "))
-        #TODO Check fi the num is valid
+        num = input("Enter the number: ")
+        while not Game.is_integer(num, 1, len(valid_plays)):
+            num = input("Enter the number: ")
+        num = int(num)
         throw = valid_plays[num-1]
 
         for card in throw:
@@ -60,12 +63,14 @@ class Game:
         for index, card in enumerate(self.dealer.choice_card, 2):
             print(index, ": ", card)
 
-        choice_pick = int(input("Enter the number: "))
+        choice_pick = input("Enter the number: ")
+        while not Game.is_integer(choice_pick, 1, len(self.dealer.choice_card)+1):
+            choice_pick = input("Enter the number: ")
+        choice_pick = int(choice_pick)
         print("\n")
         if choice_pick == 1:
             player.hand.append(self.dealer.current_deck.pop())
         else:
-            #TODO check choice
             player.hand.append(self.dealer.choice_card.pop(choice_pick-2))
         player.print_current_hand()
 
@@ -86,3 +91,16 @@ class Game:
 
         print("Winner : Player ", winner_player_id)
         print("Winner Score :", min_score)
+
+    @staticmethod
+    def is_integer(input_number, start, end ):
+        try:
+            num = int(input_number)
+            print("Choice : ", num, start, end)
+            if num < start or num > end:
+                print("Invalid Choice : ", input_number)
+                return False
+            return True
+        except ValueError:
+            print("Expcting a number but got: ", input_number)
+            return False
