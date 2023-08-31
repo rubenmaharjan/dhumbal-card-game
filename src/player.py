@@ -35,7 +35,6 @@ class Player:
         self.compute_score()
         return self.score < 6
 
-    # TODO Implement the function
     def finish_game(self):
         '''
             Finish the game by showing your hand
