@@ -14,6 +14,9 @@ class Game:
         self.dealer = Dealer()
 
     def start_game(self):
+        '''
+            The entry point of the play
+        '''
         self.dealer.deal_card(self.players)
 
         self.winner = False
@@ -35,8 +38,9 @@ class Game:
                 print("\nPlayer Change!!!!!!!!!!!!!!!\n")
 
     def play_turn(self, player:Player):
-
-
+        '''
+            Player turn. Asks the player to choose the card to throw and pick.
+        '''
 
         print("Your Current Hand:")
         player.print_current_hand()
