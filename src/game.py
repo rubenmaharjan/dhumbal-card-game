@@ -85,6 +85,10 @@ class Game:
         self.dealer.choice_card = throw
 
     def finish_game(self):
+        '''
+            Finish the game and calculate the score
+            Prints the winner as well
+        '''
         min_score = 100
         winner_player_id = -1
         for player in self.players:
@@ -98,6 +102,9 @@ class Game:
 
     @staticmethod
     def is_integer(input_number, start, end ):
+        '''
+            Verifies that the input taken from the user is integer
+        '''
         try:
             num = int(input_number)
             print("Choice : ", num, start, end)
