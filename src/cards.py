@@ -25,12 +25,21 @@ class Deck(object):
         self.discarded_cards = []
 
     def build(self, size = 1):
+        '''
+            Build the deck
+        '''
         suits = ['HEARTS', 'DIAMONDS', 'SPADES', 'CLUBS']
 
         self.cards = [Card(s,v) for v in range(1,14) for s in suits] * size
 
     def discard(self, card:Card):
+        '''
+            Helper function to add cards to discarded list
+        '''
         self.discarded_cards.append(card)
 
     def shuffle(self):
+        '''
+            shuffle function
+        '''
         random.shuffle(self.cards)
