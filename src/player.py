@@ -29,10 +29,18 @@ class Player:
         return playable_cards
 
     def compute_score(self):
+        '''
+            Compute the score, i.e, the sum of card value in a players hand
+        '''
         self.score = sum([card.value for card in self.hand])
 
     def can_finish(self):
+        '''
+            Check if the player can finish the game
+            Usually they can if its less than 6
+        '''
         self.compute_score()
+        #TODO Put the number in setting file 
         return self.score < 6
 
     def finish_game(self):
