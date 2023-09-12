@@ -8,9 +8,9 @@ class Game:
         '''
             Set the players and agents of the game.
         '''
-        self.player1 = Player(1)
+        player1 = Player(1)
         player2 = Player(2)
-        self.players = [self.player1, player2]
+        self.players = [player1, player2]
         self.dealer = Dealer()
 
     def start_game(self):
